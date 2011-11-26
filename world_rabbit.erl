@@ -45,7 +45,7 @@ handle_sync_event(youHaveBeenEaten, _From, _StateName, StateData) ->
     {stop, normal, {ok, imDeadNow}, StateData}.
 
 
-handle_event({wolfAround, WolfPosition}, StateName, StateData) when StateName /= splitting -> 
+handle_event({wolfAround, WolfPosition}, StateName, StateData) -> 
     if 
         abs((StateData#rabbit_state.position)#position.x - WolfPosition#position.x) =< ?NOTIFY_RATIO, 
         abs((StateData#rabbit_state.position)#position.y - WolfPosition#position.y) =< ?NOTIFY_RATIO  ->

@@ -124,11 +124,11 @@ chasing(timeout, State) ->
                             {stop, normal, NewState}
                     end
             catch
-                exit:_Reason -> NewState = State3, 
+                exit:_Reason -> NewState = State3#wolf_state{time_chasing=0, rabbit_being_chased=undefined, target=#target{x=undefined,y=undefined}},
                                 {next_state, running, NewState, ?TIMEOUT}
             end
     catch
-        exit:_Reason -> NewState = State, 
+        exit:_Reason -> NewState = State#wolf_state{time_chasing=0, rabbit_being_chased=undefined, target=#target{x=undefined,y=undefined}},
                         {next_state, running, NewState, ?TIMEOUT}
     end.
 

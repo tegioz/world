@@ -9,7 +9,7 @@ This is my first attempt at writting something in Erlang.
 
 Edit world\_types.hrl and modify the world\_info record (max\_x and max\_y are the dimensions of the world):
 
--record(world\_info, {carrots=20,rabbits=2,wolves=2,max\_x=10,max\_y=10}).
+-record(world\_info, {carrots=60,rabbits=15,wolves=5,max\_x=15,max\_y=15}).
 
 ### Build:
 

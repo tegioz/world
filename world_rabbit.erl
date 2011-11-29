@@ -95,12 +95,12 @@ running(timeout, State) when State#rabbit_state.wolf_around == true ->
     State2 = State#rabbit_state{position=NewPosition, direction=NewDirection},
     gen_event:notify(eventhandler, {rabbit, move, State2}),
     if
-        State2#rabbit_state.time_without_food =< ?MAX_TIME_WITHOUT_FOOD_RABBIT,    
-        State2#rabbit_state.time_scaping =< ?MAX_TIME_SCAPING ->    
-            NewState = State2#rabbit_state{time_without_food=State2#rabbit_state.time_without_food+?TIMEOUT, time_scaping=State2#rabbit_state.time_scaping+?TIMEOUT},
+        State2#rabbit_state.time_without_food < ?MAX_TIME_WITHOUT_FOOD_RABBIT,    
+        State2#rabbit_state.time_escaping =< ?MAX_TIME_ESCAPING ->    
+            NewState = State2#rabbit_state{time_without_food=State2#rabbit_state.time_without_food+?TIMEOUT, time_escaping=State2#rabbit_state.time_escaping+?TIMEOUT},
             {next_state, running, NewState, ?TIMEOUT};            
-        State2#rabbit_state.time_without_food =< ?MAX_TIME_WITHOUT_FOOD_RABBIT ->    
-            NewState = State2#rabbit_state{wolf_around=false, time_without_food=State#rabbit_state.time_without_food+?TIMEOUT, time_scaping=0},
+        State2#rabbit_state.time_without_food < ?MAX_TIME_WITHOUT_FOOD_RABBIT ->    
+            NewState = State2#rabbit_state{wolf_around=false, time_without_food=State#rabbit_state.time_without_food+?TIMEOUT, time_escaping=0},
             {next_state, running, NewState, ?TIMEOUT};
         true ->
             NewState = State2,

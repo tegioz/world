@@ -6,7 +6,7 @@
 -define(CARROTS_TO_SPLIT, 6). 
 -define(RABBITS_TO_SPLIT, 3). 
 -define(CARROT_UNIT, 1). 
--define(MAX_TIME_SCAPING, 5000).
+-define(MAX_TIME_ESCAPING, 5000).
 -define(MAX_TIME_CHASING, 5000).
 -define(MAX_TIME_WITHOUT_FOOD_RABBIT, 20000).
 -define(MAX_TIME_WITHOUT_FOOD_WOLF, 30000).
@@ -14,5 +14,5 @@
 -record(target, {x,y}).
 -record(world_info, {carrots=60,rabbits=12,wolves=5,max_x=15,max_y=15}).
 -record(carrot_state, {pid,position=#position{x=0,y=0},quantity=4,world_info=#world_info{}}).
--record(rabbit_state, {pid,position=#position{},direction,target=#target{},carrots_eaten=0,time_without_food=0,time_scaping=0,world_info=#world_info{},carrot_being_eaten=undefined,wolf_around=false}).
+-record(rabbit_state, {pid,position=#position{},direction,target=#target{},carrots_eaten=0,time_without_food=0,time_escaping=0,world_info=#world_info{},carrot_being_eaten=undefined,wolf_around=false}).
 -record(wolf_state, {pid,position=#position{},direction,target=#target{},rabbits_eaten=0,time_without_food=0,time_chasing=0,world_info=#world_info{},rabbit_being_chased=undefined}).
